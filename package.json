@@ -7,8 +7,12 @@
     "test": "mocha test --bail --exit --timeout 60000"
   },
   "keywords": [],
-  "author": "",
+  "author": "ddz",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ddzyan/bagpipe-lib.git"
+  },
   "devDependencies": {
     "mocha": "^8.3.2"
   }
