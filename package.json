@@ -2,7 +2,7 @@
   "name": "bagpipe-lib",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha test --bail --exit --timeout 60000"
   },
