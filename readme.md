@@ -8,6 +8,8 @@
 - ratio 异步任务队列长度，避免加入过多的异步任务
 - activeJobLimit 并行执行的异步任务数量
 
+可以通过监听 full 事件，可以获得满载通知，可以根据情况修改 activeJobLimit 数量
+
 ## 安装
 
 ```shell
@@ -17,18 +19,22 @@ npm i bagpipe --save
 ## 使用
 
 ```js
-const Bagpipe = require('bagpipe');
+const Bagpipe = require('./lib');
 
 const asyncFn = function (ms, callback) {
   setTimeout(function () {
     callback(null, {});
-  }, ms);
+  }, ms * 1000);
 };
 
 const bagpipe = new Bagpipe(3);
 
-for (let i = 0; i < 10; i++) {
-  bagpipe.push(asyncFn, 10, function () {
+bagpipe.on('full', length => {
+  console.log('full', length);
+});
+
+for (let i = 0; i < 5; i++) {
+  bagpipe.push(asyncFn, 2, function () {
     console.log('success');
   });
 }
